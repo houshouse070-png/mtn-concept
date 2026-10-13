@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTN — Concept Redesign</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth; /* liquid-smooth scrolling */
+    }
+
+    body { font-family: Arial, sans-serif; background: #000; color: #fff; }
+
+    /* ============ HEADER ============ */
+    header {
+      background: #ffcc00;
+      color: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 { font-size: 1.8em; }
+    nav a {
+      color: #000;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    /* liquid underline effect */
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -6px;
+      left: 0;
+      background: #000;
+      transition: width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      border-radius: 3px;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* ============ HERO ============ */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #111, #1a1a1a);
+      animation: fadeUp 1s ease both;
+    }
+    .hero h2 { font-size: 3em; color: #ffcc00; margin-bottom: 20px; }
+    .hero p { font-size: 1.3em; max-width: 600px; margin: 0 auto 30px; color: #ddd; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============ LIQUID BUTTONS ============ */
+    .btn {
+      display: inline-block;
+      background: #ffcc00;
+      color: #000;
+      padding: 15px 40px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                  box-shadow 0.3s ease,
+                  background 0.3s ease;
+      will-change: transform;
+    }
+    /* shine sweep on hover */
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+    }
+    .btn:hover::before { left: 125%; }
+    .btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(255, 204, 0, 0.4);
+      background: #ffd633;
+    }
+    .btn:active { transform: translateY(-1px) scale(0.98); }
+
+    /* ============ SECTIONS ============ */
+    section { padding: 70px 20px; max-width: 1000px; margin: 0 auto; }
+    section h2 { color: #ffcc00; text-align: center; font-size: 2.2em; margin-bottom: 40px; }
+
+    /* ============ CARDS (lift on hover) ============ */
+    .cards { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
+    .card {
+      background: #161616;
+      border: 2px solid #ffcc00;
+      border-radius: 15px;
+      padding: 30px;
+      width: 280px;
+      text-align: center;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                  box-shadow 0.35s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 18px 40px rgba(255, 204, 0, 0.25);
+    }
+    .card h3 { color: #ffcc00; margin-bottom: 15px; font-size: 1.4em; }
+    .card .price { font-size: 2em; font-weight: bold; margin: 15px 0; }
+    .card ul { list-style: none; color: #bbb; margin-bottom: 20px; }
+    .card li { padding: 6px 0; border-bottom: 1px solid #333; }
+
+    /* subtle entrance animation for cards */
+    .card { animation: fadeUp 0.8s ease both; }
+    .card:nth-child(2) { animation-delay: 0.15s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: #ffcc00;
+      color: #000;
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: bold;
+    }
+    footer a { color: #000; text-decoration: underline; transition: opacity 0.3s ease; }
+    footer a:hover { opacity: 0.7; }
+    .disclaimer { font-size: 0.85em; font-weight: normal; margin-top: 10px; color: #333; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MTN</h1>
+    <nav>
+      <a href="#plans">Data Plans</a>
+      <a href="#why">Why MTN</a>
+      <a href="#pitch">The Pitch</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Everywhere You Go</h2>
+    <p>A fresh, modern concept for MTN's digital presence — faster, cleaner, built for the customer of tomorrow.</p>
+    <a href="#plans" class="btn">Explore Plans</a>
+  </div>
+
+  <section id="plans">
+    <h2>Data Plans</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Starter</h3>
+        <div class="price">₦1,000</div>
+        <ul>
+          <li>2GB Data</li>
+          <li>30 Days Validity</li>
+          <li>Free Night Browsing</li>
+        </ul>
+        <a href="#" class="btn">Choose</a>
+      </div>
+      <div class="card">
+        <h3>Pro</h3>
+        <div class="price">₦3,500</div>
+        <ul>
+          <li>10GB Data</li>
+          <li>30 Days Validity</li>
+          <li>Free Calls Weekends</li>
+        </ul>
+        <a href="#" class="btn">Choose</a>
+      </div>
+      <div class="card">
+        <h3>Max</h3>
+        <div class="price">₦10,000</div>
+        <ul>
+          <li>40GB Data</li>
+          <li>60 Days Validity</li>
+          <li>Unlimited Social</li>
+        </ul>
+        <a href="#" class="btn">Choose</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <h2>Why This Design Works</h2>
+    <p style="text-align:center; max-width:700px; margin:0 auto; color:#ccc; font-size:1.15em; line-height:1.8;">
+      Bold brand colors. Mobile-first layout. Plans compared at a glance.
+      This concept cuts clutter and puts what customers want front and center —
+      simple pricing, clear value, one tap to buy.
+    </p>
+  </section>
+
+  <section id="pitch">
+    <h2>The Pitch</h2>
+    <p style="text-align:center; max-width:700px; margin:0 auto; color:#ccc; font-size:1.15em; line-height:1.8;">
+      I'm a web developer offering modern, conversion-focused redesigns.
+      This demo shows what MTN's web experience could feel like.
+      Interested in working together? Let's talk.
+    </p>
+    <p style="text-align:center; margin-top:30px;">
+      <a href="mailto:Houshouse070@gmail.com" class="btn">Contact Me</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>Concept Redesign — Crafted with passion</p>
+    <p style="margin-top:8px;">📧 <a href="mailto:Houshouse070@gmail.com">Houshouse070@gmail.com</a></p>
+    <p class="disclaimer">This is an unofficial concept demo. Not affiliated with or endorsed by MTN Group.</p>
+  </footer>
+
+</body>
+</html>
